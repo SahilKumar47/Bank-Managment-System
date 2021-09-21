@@ -7,5 +7,6 @@ import com.bankapp.web.entities.User;
 
 @Repository
 public interface Userdao extends JpaRepository<User, Integer>{
-
+	public User findByUsername(String username);
+	
 }

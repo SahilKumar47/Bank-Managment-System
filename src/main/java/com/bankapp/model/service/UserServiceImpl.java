@@ -3,6 +3,7 @@ package com.bankapp.model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,9 @@ import com.bankapp.web.entities.User;
 public class UserServiceImpl implements UserService {
 
 	private Userdao userdao;
+	
+//	@Autowired
+//	private PasswordEncoder encoder;
 
 	@Autowired
 	public UserServiceImpl(Userdao userdao) {
@@ -23,6 +27,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User addUser(User user) {
+//		user.setPassword(encoder.encode(user.getPassword()));
 		userdao.save(user);
 		return null;
 	}
@@ -50,5 +55,10 @@ public class UserServiceImpl implements UserService {
 	public User getUserById(Integer userId) {
 		return userdao.findById(userId)
 				.orElseThrow(() -> new UserNotFoundException("User by id " + userId + " not found"));
+	}
+
+	@Override
+	public User getUserByUsername(String username) {
+		return userdao.findByUsername(username);
 	}
 }

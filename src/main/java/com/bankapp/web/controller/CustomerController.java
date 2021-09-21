@@ -1,12 +1,16 @@
 package com.bankapp.web.controller;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bankapp.model.dto.CustomerObject;
@@ -15,6 +19,7 @@ import com.bankapp.web.entities.Account;
 import com.bankapp.web.entities.Customer;
 
 @Controller
+@RequestMapping(path = "/customer")
 public class CustomerController {
 	private CustomerService customerService;
 
@@ -36,7 +41,10 @@ public class CustomerController {
 	}
 
 	@PostMapping(value = "/addCustomer")
-	public String addCustomerPost(@ModelAttribute(name = "customerObject") CustomerObject customerObject) {
+	public String addCustomerPost(@Valid @ModelAttribute(name = "customerObject") CustomerObject customerObject, BindingResult result) {
+		if(result.hasErrors()) {
+			return "addCustomer";
+		}
 		Integer customerId = customerObject.getCustomerId();
 		if (customerId == 0) {
 

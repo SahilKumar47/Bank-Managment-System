@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,11 +24,16 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
+	@NotEmpty(message = "Username cannot be null")
 	private String username;
+	@Min(value = 4, message = "Password must be minimum of 4 characters")
 	private String password;
 	private String email;
+	@Min(value = 10, message = "Must be 10 digits")
 	private String phone;
+	@NotEmpty(message = "value cannot be null")
 	private String profile;
+	@NotNull(message = "value cannot be null")
 	private Double salary;
 
 	public User(String username, String password, String email, String phone, String profile, Double salary) {

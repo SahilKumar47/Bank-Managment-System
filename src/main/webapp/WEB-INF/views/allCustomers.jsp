@@ -48,7 +48,7 @@ tr:nth-child(even) {
 					<td>${customer.account.accountId}</td>
 					<td>${customer.account.accountBalance}</td>
 					<td><a
-						href="viewTransaction?id=<c:out value="${customer.account.accountId}"/>">View Transaction</a></td>
+						href="/bankapp/transaction/viewTransaction?id=<c:out value="${customer.account.accountId}"/>">View Transaction</a></td>
 					<td><a
 						href="deleteCustomer?id=<c:out value="${customer.customerId}"/>">delete</a></td>
 					<td><a
@@ -59,12 +59,12 @@ tr:nth-child(even) {
 		</tbody>
 	</table>
 	<h4><a href="addCustomer">Add New Customer</a><br/></h4>
-	<h4><a href="allUsers">Show Users</a><br/></h4>
-	<h4><a href="addUser">Add New User</a><br/></h4>
-	<h4><a href="withdraw">Withdraw</a><br/></h4>
-	<h4><a href="deposit">Deposit</a><br/></h4>
-	<h4><a href="transfer">Transfer</a><br/></h4>
-	<h4><a href="transactionHistory">View All Transaction History</a><br/></h4>
-	<h4><a href="pendingTransactions">Pending Transactions</a><br/></h4>
+	<h4><a href="/bankapp/user/allUsers">Show Users</a><br/></h4>
+	<h4><a href="/bankapp/user/addUser">Add New User</a><br/></h4>
+	<h4><a href="/bankapp/transaction/withdraw">Withdraw</a><br/></h4>
+	<h4><a href="/bankapp/transaction/deposit">Deposit</a><br/></h4>
+	<h4><a href="/bankapp/transaction/transfer">Transfer</a><br/></h4>
+	<h4><a href="/bankapp/transaction/transactionHistory">View All Transaction History</a><br/></h4>
+	<h4><a href="/bankapp/transaction/pendingTransactions">Pending Transactions</a><br/></h4>
 </body>
 </html>

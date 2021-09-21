@@ -7,12 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Withdraw</title>
+<style type="text/css">
+.error {
+	color: #EE1313;
+}
+</style>
 </head>
 <body>
 	<form:form action="withdraw" modelAttribute="transferObject">
 	Enter Account: <form:input path="fromAccountId" />
+		<form:errors path="fromAccountId" class="error" />
 		<br />
 	Enter Amount: <form:input path="transferAmount" />
+		<form:errors path="transferAmount" class="error" />
 		<br />
 		<input type="submit">
 	</form:form>

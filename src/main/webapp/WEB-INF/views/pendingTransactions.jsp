@@ -63,7 +63,7 @@ tr:nth-child(even) {
 
 		</tbody>
 	</table>
-	<a href="allCustomers">View All Customers</a><br/>
+	<a href="/bankapp/customer/allCustomers">View All Customers</a><br/>
 	<a href="transactionHistory">View All Transaction History</a><br/>
 </body>
 </html>
