@@ -28,7 +28,7 @@ public class UserController {
 	@GetMapping(value = "/allUsers")
 	public String showAllUsers(ModelMap map) {
 		map.addAttribute("Users", userService.getAllUser());
-		return "allUsers";
+		return "allUsers_new";
 	}
 
 	@GetMapping(value = "/addUser")

@@ -16,6 +16,6 @@ public class TransferObject {
 	@NotNull(message = "Account number cannot be null")
 	private Integer fromAccountId;
 	private Integer toAccountId;
-	@NotNull(message = "Amount number cannot be null")
+	@NotNull(message = "Amount cannot be null")
 	private Double transferAmount;
 }

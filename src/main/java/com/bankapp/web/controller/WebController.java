@@ -17,28 +17,35 @@ import com.bankapp.sec.service.SecUser;
 @Controller
 @RequestMapping(path = "/")
 public class WebController {
-	@GetMapping(path="/login")
+	@GetMapping(path = "/login")
 	public String login() {
-		return "login_new";
+		return "loginpage";
 	}
 	
-	@GetMapping(path="/home")
-	public String hello() {
-		return "home";
+	@GetMapping(path = "/nav")
+	public String navBar(@AuthenticationPrincipal SecUser secUser, ModelMap map) {
+		map.addAttribute("profile", secUser.getProfile());
+		return "navbar";
 	}
-	
-	@GetMapping(path="/accessdenied")
+
+	@GetMapping(path = "/home")
+	public String hello(@AuthenticationPrincipal SecUser secUser, ModelMap map) {
+		map.addAttribute("profile", secUser.getProfile());
+		return "homepage";
+	}
+
+	@GetMapping(path = "/accessdenied")
 	public String accessDenied(@AuthenticationPrincipal SecUser secUser, ModelMap map) {
 		map.addAttribute("username", secUser.getUsername());
 		return "403";
 	}
-	
+
 	@GetMapping(path = "/logout")
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    if (auth != null){    
-	        new SecurityContextLogoutHandler().logout(request, response, auth);
-	    }
-	    return "redirect:/login?logout=1";
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "redirect:/login?logout=1";
 	}
 }

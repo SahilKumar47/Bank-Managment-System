@@ -7,6 +7,6 @@
 <title>Account not found</title>
 </head>
 <body>
-${message}
+${message} <a href="/bankapp/home">home</a>
 </body>
 </html>

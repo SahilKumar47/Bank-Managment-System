@@ -40,7 +40,7 @@
 			<div class="col-md-10">
 				<h3>OPPSSS!!!! Sorry...</h3>
 				<p>
-					Sorry, your access is refused due to security reasons of our server
+					Sorry ${username}, your access is refused due to security reasons of our server
 					and also our sensitive data.<br />Please go back to the previous
 					page to continue browsing.
 				</p>
@@ -51,6 +51,6 @@
 	</div>
 
 	<div id="footer" class="text-center">Bank App</div>
-</body>
+</body>            
 
 </html>

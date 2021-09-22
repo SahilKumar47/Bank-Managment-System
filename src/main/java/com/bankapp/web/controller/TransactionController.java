@@ -31,20 +31,20 @@ public class TransactionController {
 	@GetMapping(value = "/transactionHistory")
 	public String showAllCustomer(ModelMap map) {
 		map.addAttribute("TransactionHistory", transactionService.getAllTranscations());
-		return "transactionHistory";
+		return "transactionHistory_new";
 	}
 
 	@GetMapping(value = "/withdraw")
 	public String withdrawMoney(ModelMap map) {
 		map.addAttribute("transferObject", new TransferObject());
-		return "withdraw";
+		return "withdraw_new";
 	}
 
 	@PostMapping(value = "/withdraw")
 	public String withdrawMoneyPost(@Valid @ModelAttribute(name = "transferObject") TransferObject transferObject,
 			BindingResult result) {
 		if (result.hasErrors()) {
-			return "withdraw";
+			return "withdraw_new";
 		}
 		transactionService.withdraw(transferObject.getFromAccountId(), transferObject.getTransferAmount());
 		return "redirect:transactionHistory";
@@ -53,14 +53,14 @@ public class TransactionController {
 	@GetMapping(value = "/deposit")
 	public String depositMoney(ModelMap map) {
 		map.addAttribute("transferObject", new TransferObject());
-		return "deposit";
+		return "deposit_new";
 	}
 
 	@PostMapping(value = "/deposit")
 	public String depositMoneyPost(@Valid @ModelAttribute(name = "transferObject") TransferObject transferObject,
 			BindingResult result) {
 		if (result.hasErrors()) {
-			return "deposit";
+			return "deposit_new";
 		}
 		transactionService.deposit(transferObject.getFromAccountId(), transferObject.getTransferAmount());
 		return "redirect:transactionHistory";
@@ -69,14 +69,14 @@ public class TransactionController {
 	@GetMapping(value = "/transfer")
 	public String transferMoney(ModelMap map) {
 		map.addAttribute("transferObject", new TransferObject());
-		return "transfer";
+		return "transfer_new";
 	}
 
 	@PostMapping(value = "/transfer")
 	public String transferMoneyPost(@Valid @ModelAttribute(name = "transferObject") TransferObject transferObject,
 			BindingResult result) {
 		if (result.hasErrors()) {
-			return "transfer";
+			return "transfer_new";
 		}
 		transactionService.transfer(transferObject.getFromAccountId(), transferObject.getToAccountId(),
 				transferObject.getTransferAmount());
@@ -89,14 +89,14 @@ public class TransactionController {
 		List<Transaction> toAccList = transactionService.showTransactionByToAccountId(accountId);
 		fromAccList.addAll(toAccList);
 		map.addAttribute("TransactionHistory", fromAccList);
-		return "transactionHistory";
+		return "transactionHistory_new";
 	}
 
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping(value = "/pendingTransactions")
 	public String showPendingTransactions(ModelMap map) {
 		map.addAttribute("TransactionHistory", transactionService.showTransactionByStatus("Pending"));
-		return "pendingTransactions";
+		return "pendingTransaction_new";
 	}
 
 	@GetMapping(value = "/rejectTransaction")

@@ -26,7 +26,6 @@ public class User {
 	private Integer userId;
 	@NotEmpty(message = "Username cannot be null")
 	private String username;
-	@Min(value = 4, message = "Password must be minimum of 4 characters")
 	private String password;
 	private String email;
 	@Min(value = 10, message = "Must be 10 digits")

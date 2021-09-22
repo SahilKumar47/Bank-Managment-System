@@ -31,7 +31,7 @@ public class CustomerController {
 	@GetMapping(value = "/allCustomers")
 	public String showAllCustomer(ModelMap map) {
 		map.addAttribute("Customers", customerService.getAllCustomer());
-		return "allCustomers";
+		return "allCustomers_new";
 	}
 
 	@GetMapping(value = "/addCustomer")
