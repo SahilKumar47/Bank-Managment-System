@@ -582,7 +582,7 @@ a:hover {
 						<ul>
 							<li><a href="/bankapp/transaction/withdraw">Withdraw</a></li>
 							<li><a href="/bankapp/transaction/deposit">Deposit</a></li>
-							<li><a href="/bankapptransaction/transfer">Fund Transfer</a></li>
+							<li><a href="/bankapp/transaction/transfer">Fund Transfer</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#"><span>Transactions
 						</span> <i class="bi bi-chevron-down"></i></a>

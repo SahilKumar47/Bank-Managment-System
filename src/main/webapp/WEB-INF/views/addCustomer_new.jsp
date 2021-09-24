@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Withdraw</title>
+<title>Transfer</title>
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet" />
@@ -93,9 +93,13 @@ a {
 		
 		
 		
+		
+		
 		 1fr[end];
 	-ms-grid-rows: [top] 1fr[top-gutter] (64px)[8] [bottom-gutter] 1fr[bottom];
 	grid-template-rows: [top] 1fr[top-gutter] repeat(8, 64px)[bottom-gutter]
+		
+		
 		
 		
 		
@@ -575,12 +579,13 @@ a:hover {
 						<li><a class="nav-link scrollto" href="/bankapp/user/addUser">New
 								User</a></li>
 					</c:if>
-					<li class="dropdown"><a href="#"><span class="active">Banking </span> <i
-							class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="#"><span class="active">Banking
+						</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="/bankapp/transaction/withdraw">Withdraw</a></li>
 							<li><a href="/bankapp/transaction/deposit">Deposit</a></li>
-							<li><a href="/bankapp/transaction/transfer">Fund Transfer</a></li>
+							<li><a href="/bankapp/transaction/transfer">Fund
+									Transfer</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#"><span>Transactions
 						</span> <i class="bi bi-chevron-down"></i></a>
@@ -602,7 +607,8 @@ a:hover {
 		<div class="box-root flex-flex flex-direction--column"
 			style="min-height: 100vh; flex-grow: 1;">
 			<div class="loginbackground box-background--white padding-top--64">
-				<div class="loginbackground-gridContainer" style="margin-top: 4.5rem">
+				<div class="loginbackground-gridContainer"
+					style="margin-top: 4.5rem">
 					<div class="box-root flex-flex" style="grid-area: top/start/8/end;">
 						<div class="box-root"
 							style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
@@ -648,30 +654,44 @@ a:hover {
 				<div
 					class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
 					<h1>
-						<a href="" rel="dofollow">Withdraw</a>
+						<a href="" rel="dofollow">Add Customer</a>
 					</h1>
 				</div>
 				<div class="formbg-outer">
 					<div class="formbg">
 						<div class="formbg-inner padding-horizontal--48">
-							<span class="padding-bottom--15">Withdraw Funds from the
-								account</span>
-							<form:form id="stripe-login" action="withdraw"
-								modelAttribute="transferObject">
-								<div class="field padding-bottom--24">
-									<label for="accountNo">Account Number</label>
-									<form:input path="fromAccountId" type="number" name="accountNo" />
-									<form:errors path="fromAccountId" class="error" />
+							<span class="padding-bottom--15">Add Details of the customer</span>
+							<form:form id="stripe-login" action="addCustomer"
+								modelAttribute="customerObject">
+								<form:hidden path="customerId" value="0" />
+								<div class="field padding-bottom--15">
+									<label for="name">Name</label>
+									<form:input path="customerName" type="text" name="name" />
+									<form:errors path="customerName" class="error" />
 									<br />
 								</div>
-								<div class="field padding-bottom--24">
-									<div class="grid--50-50">
-										<label for="amount">Amount</label>
-									</div>
-									<form:input type="text" name="amount" path="transferAmount" />
-									<form:errors path="transferAmount" class="error" />
+								<div class="field padding-bottom--15">
+									<label for="email">Email</label>
+									<form:input path="customerEmail" type="email" name="email" />
+									<form:errors path="customerEmail" class="error" />
+									<br />
 								</div>
-								<div class="field padding-bottom--24">
+								<div class="field padding-bottom--15">
+									<label for="address">Address</label>
+									<form:input type="text" name="address" path="customerAddress" />
+									<form:errors path="customerAddress" class="error" />
+								</div>
+								<div class="field padding-bottom--15">
+									<label for="phone">Phone</label>
+									<form:input type="text" name="phone" path="customerPhone" />
+									<form:errors path="customerPhone" class="error" />
+								</div>
+								<div class="field padding-bottom--15">
+									<label for="balance">Balance</label>
+									<form:input type="number" name="balance" path="accountBalance" />
+									<form:errors path="accountBalance" class="error" />
+								</div>
+								<div class="field padding-bottom--15">
 									<input type="submit" name="submit" value="Continue">
 								</div>
 							</form:form>
@@ -682,5 +702,4 @@ a:hover {
 		</div>
 	</div>
 </body>
-
 </html>

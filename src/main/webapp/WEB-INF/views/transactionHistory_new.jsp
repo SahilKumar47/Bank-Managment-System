@@ -370,7 +370,7 @@ a:hover {
 						<ul>
 							<li><a href="/bankapp/transaction/withdraw">Withdraw</a></li>
 							<li><a href="/bankapp/transaction/deposit">Deposit</a></li>
-							<li><a href="/bankapptransaction/transfer">Fund Transfer</a></li>
+							<li><a href="/bankapp/transaction/transfer">Fund Transfer</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#"><span class="active">Transactions
 						</span> <i class="bi bi-chevron-down"></i></a>
@@ -431,7 +431,22 @@ a:hover {
 										<td>${transactionHistory.status}</td>
 									</tr>
 								</c:if>
-								<c:if test="${transactionHistory.status != 'Rejected'}">
+								<c:if test="${transactionHistory.status == 'Pending'}">
+									<tr class="table-warning">
+										<td scope="row">${transactionHistory.transactionId}</td>
+										<td>${transactionHistory.fromAccount}</td>
+										<c:if test="${empty transactionHistory.toAccount}">
+											<td>Self</td>
+										</c:if>
+										<c:if test="${not empty transactionHistory.toAccount}">
+											<td>${transactionHistory.toAccount}</td>
+										</c:if>
+										<td>${transactionHistory.amount}</td>
+										<td>${transactionHistory.transactionType}</td>
+										<td>${transactionHistory.status}</td>
+									</tr>
+								</c:if>
+								<c:if test="${transactionHistory.status != 'Rejected' && transactionHistory.status != 'Pending'}">
 									<tr class="table-success">
 										<td scope="row">${transactionHistory.transactionId}</td>
 										<td>${transactionHistory.fromAccount}</td>

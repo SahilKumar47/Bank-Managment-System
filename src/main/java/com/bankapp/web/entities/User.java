@@ -42,6 +42,5 @@ public class User {
 		this.phone = phone;
 		this.profile = profile;
 		this.salary = salary;
-	}
-
+	}      
 }

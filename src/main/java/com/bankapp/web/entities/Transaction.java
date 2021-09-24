@@ -29,7 +29,7 @@ public class Transaction {
 	private Double amount;
 	private String transactionType;
 	private String status;
-
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "account_fk")
 	private Account account;
@@ -40,6 +40,5 @@ public class Transaction {
 		this.amount = amount;
 		this.transactionType = transactionType;
 		this.status = status;
-	}
-
+	}   
 }

@@ -37,13 +37,13 @@ public class CustomerController {
 	@GetMapping(value = "/addCustomer")
 	public String addCustomer(ModelMap map) {
 		map.addAttribute("customerObject", new CustomerObject());
-		return "addCustomer";
+		return "addCustomer_new";
 	}
 
 	@PostMapping(value = "/addCustomer")
 	public String addCustomerPost(@Valid @ModelAttribute(name = "customerObject") CustomerObject customerObject, BindingResult result) {
 		if(result.hasErrors()) {
-			return "addCustomer";
+			return "addCustomer_new";
 		}
 		Integer customerId = customerObject.getCustomerId();
 		if (customerId == 0) {

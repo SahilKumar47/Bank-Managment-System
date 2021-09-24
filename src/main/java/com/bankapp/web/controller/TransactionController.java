@@ -90,7 +90,7 @@ public class TransactionController {
 		fromAccList.addAll(toAccList);
 		map.addAttribute("TransactionHistory", fromAccList);
 		return "transactionHistory_new";
-	}
+	}             
 
 	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@GetMapping(value = "/pendingTransactions")
@@ -113,3 +113,4 @@ public class TransactionController {
 	}
 
 }
+                              
